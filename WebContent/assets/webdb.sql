@@ -18,5 +18,12 @@ DROP SEQUENCE seq_users_no;
 
 INSERT INTO users VALUES(seq_users_no.NEXTVAL,);
 
+UPDATE users
+SET password = 'test'
+WHERE id = '테스트';
+
+COMMIT;
+ROLLBACK;
+
 SELECT * 
 FROM users;

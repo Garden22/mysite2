@@ -43,7 +43,7 @@ public class UserDao {
 	
 	
 	public UserVo getUser(UserVo uVo) {
-		UserVo user = new UserVo();
+		UserVo user = null;
 		getConnection();
 		
 		try {

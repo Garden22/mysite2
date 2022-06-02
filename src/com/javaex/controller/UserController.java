@@ -52,16 +52,17 @@ public class UserController extends HttpServlet {
 				
 				UserVo uVo = new UserVo(id, pw);
 				uDao = new UserDao();
-				user = uDao.getUser(uVo);
-				
-				if (user == null) System.out.println("[로그인 실패]");
+				UserVo userA = uDao.getUser(uVo);
+												
+				if (userA == null) {
+					System.out.println("[로그인 실패]");
+				}
 				else {
 					System.out.println("[로그인 성공]");
 					
-					session.setAttribute("user", user);
-					
-					WebUtil.redirect(request, response, "/mysite2/main");
+					session.setAttribute("user", userA);
 				}
+				WebUtil.forward(request, response, "/main");
 				break;
 				
 			case "logout":

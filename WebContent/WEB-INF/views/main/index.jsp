@@ -4,9 +4,7 @@
 <%
 	session = request.getSession();
 	UserVo user = (UserVo)session.getAttribute("user");
-	
-	String name = "logout";
-	if (user != null) name = user.getName();
+	if (user != null) System.out.println("user: " + user.getName());
 %>
 <!DOCTYPE html>
 <html>
@@ -26,14 +24,14 @@
 				<a href="/mysite2/main">MySite</a>
 			</h1>
 			
-			<%if (name.equals("logout")) {%>
+			<%if (user == null) {%>
 				<ul>
 					<li><a href="/mysite2/user?action=loginForm" class="btn_s">로그인</a></li>
 					<li><a href="/mysite2/user?action=joinForm" class="btn_s">회원가입</a></li>
 				</ul>
 			<%} else {%>
 				<ul>
-					<li><%=name%>님 안녕하세요^^</li>
+					<li><%=user.getName()%>님 안녕하세요^^</li>
 					<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
 					<li><a href="/mysite2/user?action=joinForm" class="btn_s">회원정보수정</a></li>
 				</ul>
@@ -71,7 +69,7 @@
 							</span>
 							<br>
 							사이트 소개, 회원가입, 방명록, 게시판으로 구성되어 있으며<br>
-							jsp&serlvet(모델2) 방식으로 제작되었습니다.<br>
+							'jsp+servlet'(모델2) 방식으로 제작되었습니다.<br>
 							<br>
 							자바 수업 + 데이터베이스 수업 + 웹프로그래밍 수업<br>
 							<br>
