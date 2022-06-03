@@ -17,7 +17,6 @@ import com.javaex.vo.UserVo;
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
@@ -78,7 +77,7 @@ public class UserController extends HttpServlet {
 				uDao = new UserDao();
 				userA = uDao.getUser(user.getId());
 				
-				session.setAttribute("user", userA);
+				session.setAttribute("user", new UserVo(userA.getNo(), userA.getId(), userA.getName()));
 				WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 				break;
 				
