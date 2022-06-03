@@ -78,7 +78,7 @@ public class UserController extends HttpServlet {
 				uDao = new UserDao();
 				userA = uDao.getUser(user.getId());
 				
-				request.setAttribute("user", userA);
+				session.setAttribute("user", userA);
 				WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 				break;
 				

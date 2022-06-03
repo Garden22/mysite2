@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.javaex.vo.UserVo" %>
 <%
-	UserVo user = (UserVo)request.getAttribute("user");
-	
+	session = request.getSession();
+	UserVo user = (UserVo)session.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
