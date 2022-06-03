@@ -62,7 +62,7 @@ public class UserController extends HttpServlet {
 					
 					session.setAttribute("user", userA);
 				}
-				WebUtil.forward(request, response, "/main");
+				WebUtil.redirect(request, response, "/mysite2/main");
 				break;
 				
 			case "logout":
@@ -90,7 +90,7 @@ public class UserController extends HttpServlet {
 				uDao.modify(uVo);
 				
 				session.setAttribute("user", new UserVo(no, id, name));
-				WebUtil.forward(request, response, "/main");
+				WebUtil.redirect(request, response, "/mysite2/main");
 				break;
 		}
 	}
