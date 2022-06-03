@@ -96,19 +96,11 @@
 							<div class="form-group">
 								<span class="form-text">성별</span> 
 								
-								<%if (user.getGender().equals("male")) {%>
 								<label for="rdo-male">남</label> 
-								<input type="radio" id="rdo-male" name="gender" value="male" checked> 
+								<input type="radio" id="rdo-male" name="gender" value="male" <%if (user.getGender().equals("male")) {%>checked<%} %>> 
 								
 								<label for="rdo-female">여</label> 
-								<input type="radio" id="rdo-female" name="gender" value="female"> 
-								<%} else {%>
-								<label for="rdo-male">남</label> 
-								<input type="radio" id="rdo-male" name="gender" value="male"> 
-								
-								<label for="rdo-female">여</label> 
-								<input type="radio" id="rdo-female" name="gender" value="female" checked> 
-								<%} %>
+								<input type="radio" id="rdo-female" name="gender" value="female" <%if (user.getGender().equals("female")) {%>checked<%} %>> 
 	
 							</div>
 	
