@@ -47,7 +47,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "select no, name from users\nwhere id = ? and password = ? ";
+			String query = "select no, id, name from users\nwhere id = ? and password = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getId());
@@ -57,16 +57,40 @@ public class UserDao {
 			
 			while(rs.next()) {
 				int no = rs.getInt(1);
-				String name = rs.getString(2);
+				String id = rs.getString(2);
+				String name = rs.getString(3);
 				
-				user = new UserVo(no, name);
+				user = new UserVo(no, id, name);
 			}
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		}
 		close();
+		if (user == null) System.out.println("[비밀번호가 일치하지 않습니다]");
 		return user;
+	}
+	
+	public void modify(UserVo uVo) {
+		int count = -1;
+		getConnection();
+		
+		try {
+			String query = "update users\nset password= ?, name= ?, gender= ?\nwhere id= ? ";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uVo.getPw());
+			pstmt.setString(2, uVo.getName());
+			pstmt.setString(3, uVo.getGender());
+			pstmt.setString(4, uVo.getId());
+			
+			count = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("error: " + e);
+		}
+		close();
+		if (count != -1) System.out.println("[" + count + "건 수정되었습니다]");
 	}
 	
 	

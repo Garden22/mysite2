@@ -70,6 +70,28 @@ public class UserController extends HttpServlet {
 				session.invalidate();
 				WebUtil.redirect(request, response, "/mysite2/main");
 				break;
+				
+			case "modifyForm":
+				WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+				break;
+				
+			case "modify":
+				session = request.getSession();
+				user = (UserVo)session.getAttribute("user");
+				id = user.getId();
+				int no = user.getNo();
+				
+				pw = request.getParameter("pw");
+				name = request.getParameter("name");
+				gender = request.getParameter("gender");
+				uVo = new UserVo(id, pw, name, gender);
+								
+				uDao = new UserDao();
+				uDao.modify(uVo);
+				
+				session.setAttribute("user", new UserVo(no, id, name));
+				WebUtil.forward(request, response, "/main");
+				break;
 		}
 	}
 

@@ -12,8 +12,9 @@ public class UserVo {
 		
 	}
 	
-	public UserVo(int no, String name) {
+	public UserVo(int no, String id, String name) {
 		this.no = no;
+		this.id = id;
 		this.name = name;
 	}
 	
