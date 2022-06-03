@@ -57,7 +57,7 @@ public class UserDao {
 			
 			while(rs.next()) {
 				int no = rs.getInt(1);
-				id = rs.getString(2);
+				String id = rs.getString(2);
 				String name = rs.getString(3);
 				
 				user = new UserVo(no, id, name);
