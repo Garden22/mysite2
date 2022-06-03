@@ -47,7 +47,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "select no, id, password, name, gender from users\nwhere id = ? and password = ? ";
+			String query = "select no, id, name from users\nwhere id = ? and password = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getId());
@@ -58,11 +58,9 @@ public class UserDao {
 			while(rs.next()) {
 				int no = rs.getInt(1);
 				id = rs.getString(2);
-				String pw = rs.getString(3);
-				String name = rs.getString(4);
-				String gender = rs.getString(5);
+				String name = rs.getString(3);
 				
-				user = new UserVo(no, id, pw, name, gender);
+				user = new UserVo(no, id, name);
 			}
 			
 		} catch (SQLException e) {
