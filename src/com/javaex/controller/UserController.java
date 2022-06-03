@@ -72,6 +72,13 @@ public class UserController extends HttpServlet {
 				break;
 				
 			case "modifyForm":
+				session = request.getSession();
+				user = (UserVo)session.getAttribute("user");
+				
+				uDao = new UserDao();
+				userA = uDao.getUser(user.getId());
+				
+				request.setAttribute("user", userA);
 				WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 				break;
 				
