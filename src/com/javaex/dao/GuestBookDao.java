@@ -22,6 +22,7 @@ public class GuestBookDao {
 
 	
 	public void add(GuestBookVo gvo) {
+		int count = -1;
 		getConnection();
 		
 		try {
@@ -32,30 +33,35 @@ public class GuestBookDao {
 			pstmt.setString(2, gvo.getPassword());
 			pstmt.setString(3, gvo.getContent());
 
-			pstmt.executeUpdate();
+			count = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		}
+		if (count > 0) System.out.println("[" + count + "건 삭제되었습니다.]");
 		close();
 	}
 	
 	
-	public void delete(int no) {
+	public void delete(int no, String pw) {
+		int count = -1;
 		getConnection();
 		
 		try {
-			String query = "delete from guestbook\nwhere no = ? ";
+			String query = "delete from guestbook\nwhere no = ? and password = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
+			pstmt.setString(2, pw);
 			
-			pstmt.executeUpdate();
+			count = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		}
 		close();
+		if (count > 0) System.out.println("[" + count + "건 삭제되었습니다.]");
+		else System.out.println("[삭제되지 않았습니다.]");
 	}
 	
 	

@@ -71,6 +71,7 @@ public class UserDao {
 		return user;
 	}
 	
+	
 	public UserVo getUser(String id) {
 		UserVo user = null;
 		getConnection();
@@ -98,6 +99,7 @@ public class UserDao {
 		close();
 		return user;
 	}
+	
 	
 	public void modify(UserVo uVo) {
 		int count = -1;

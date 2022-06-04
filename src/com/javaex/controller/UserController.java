@@ -42,7 +42,8 @@ public class UserController extends HttpServlet {
 				break;
 				
 			case "loginForm":
-				WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
+				user = (UserVo)session.getAttribute("user");
+				if (user == null) WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
 				break;
 				
 			case "login":
@@ -71,16 +72,16 @@ public class UserController extends HttpServlet {
 				break;
 				
 			case "modifyForm":
-				session = request.getSession();
 				user = (UserVo)session.getAttribute("user");
-				uDao = new UserDao();
-				userA = uDao.getUser(user.getId());
-				session.setAttribute("user", userA);
-				WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+				if (user != null) {
+					uDao = new UserDao();
+					userA = uDao.getUser(user.getId());
+					session.setAttribute("user", userA);
+					WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+				}
 				break;
 				
 			case "modify":
-				session = request.getSession();
 				user = (UserVo)session.getAttribute("user");
 				id = user.getId();
 				int no = user.getNo();

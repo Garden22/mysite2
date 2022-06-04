@@ -45,7 +45,7 @@
 				<li><a href="">입사지원서</a></li>
 				<li><a href="">게시판</a></li>
 				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite2/guestbook?action=addList">방명록</a></li>
 			</ul>
 		</div>
 		<!-- //nav -->
@@ -74,7 +74,7 @@
 							자바 수업 + 데이터베이스 수업 + 웹프로그래밍 수업<br>
 							<br>
 							<br><br>
-							<a class="" href="">[방명록에 글 남기기]</a>
+							<a class="" href="/mysite2/guestbook?action=addList">[방명록에 글 남기기]</a>
 						</p>	
 					</div>
 					<!-- //greetings -->
