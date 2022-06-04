@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.javaex.vo.UserVo" %>
 <%
-	session = request.getSession();
-	UserVo user = (UserVo)session.getAttribute("user");
+	UserVo user = (UserVo)request.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +25,7 @@
 			<ul>
 				<li><%=user.getName()%>님 안녕하세요^^</li>
 				<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-				<li><a href="/mysite2/user?action=modifyFrom" class="btn_s">회원정보수정</a></li>
+				<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
 			</ul>
 
 			

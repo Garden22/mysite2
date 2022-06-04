@@ -12,10 +12,16 @@ public class UserVo {
 		
 	}
 	
-	public UserVo(int no, String id, String name) {
+	public UserVo(int no, String name) {
 		this.no = no;
-		this.id = id;
 		this.name = name;
+	}
+	
+	public UserVo(int no, String pw, String name, String gender) {
+		this.no = no;
+		this.pw = pw;
+		this.name = name;
+		this.gender = gender;
 	}
 	
 	public UserVo(String id, String pw, String name, String gender) {

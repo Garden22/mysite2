@@ -4,8 +4,9 @@
 <%@ page import="com.javaex.vo.GuestBookVo" %>
 <%@ page import="java.util.List" %>
 <%
-	session = request.getSession();
 	UserVo user = (UserVo)session.getAttribute("user");
+	System.out.println("user " + user);
+	
 	List<GuestBookVo> gList = (List<GuestBookVo>)request.getAttribute("gList");
 %>
 <!DOCTYPE html>

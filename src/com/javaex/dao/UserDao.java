@@ -47,7 +47,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "select no, id, name from users\nwhere id = ? and password = ? ";
+			String query = "select no, name from users\nwhere id = ? and password = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getId());
@@ -57,10 +57,9 @@ public class UserDao {
 			
 			while(rs.next()) {
 				int no = rs.getInt(1);
-				String id = rs.getString(2);
-				String name = rs.getString(3);
+				String name = rs.getString(2);
 				
-				user = new UserVo(no, id, name);
+				user = new UserVo(no, name);
 			}
 			
 		} catch (SQLException e) {
@@ -72,20 +71,20 @@ public class UserDao {
 	}
 	
 	
-	public UserVo getUser(String id) {
+	public UserVo getUser(int no) {
 		UserVo user = null;
 		getConnection();
 		
 		try {
-			String query = "select no, id, password, name, gender from users\nwhere id = ? ";
+			String query = "select no, id, password, name, gender from users\nwhere no = ? ";
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, no);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				int no = rs.getInt(1);
+				no = rs.getInt(1);
 				id = rs.getString(2);
 				String pw = rs.getString(3);
 				String name = rs.getString(4);
@@ -106,13 +105,13 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "update users\nset password= ?, name= ?, gender= ?\nwhere id= ? ";
+			String query = "update users\nset password= ?, name= ?, gender= ?\nwhere no= ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getPw());
 			pstmt.setString(2, uVo.getName());
 			pstmt.setString(3, uVo.getGender());
-			pstmt.setString(4, uVo.getId());
+			pstmt.setInt(4, uVo.getNo());
 			
 			count = pstmt.executeUpdate();
 			

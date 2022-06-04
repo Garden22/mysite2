@@ -18,7 +18,7 @@ public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+
 		String action = request.getParameter("action");
 		System.out.println("UserController" + " action:" + action);
 
@@ -32,18 +32,15 @@ public class UserController extends HttpServlet {
 				String pw = request.getParameter("pw");
 				String name = request.getParameter("name");
 				String gender = request.getParameter("gender");
-				
-				UserVo user = new UserVo(id, pw, name, gender);
-				
+								
 				UserDao uDao = new UserDao();
-				uDao.join(user);
-				WebUtil.forward(request, response, "/WEB-INF/views/user/joinOk.jsp");
+				uDao.join(new UserVo(id, pw, name, gender));
 				
+				WebUtil.forward(request, response, "/WEB-INF/views/user/joinOk.jsp");
 				break;
 				
 			case "loginForm":
-				user = (UserVo)session.getAttribute("user");
-				if (user == null) WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
+				WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
 				break;
 				
 			case "login":
@@ -51,50 +48,58 @@ public class UserController extends HttpServlet {
 				pw = request.getParameter("pw");
 				
 				UserVo uVo = new UserVo(id, pw);
+				
 				uDao = new UserDao();
-				UserVo userA = uDao.getUser(uVo);
+				UserVo user = uDao.getUser(uVo);
 												
-				if (userA == null) {
+				if (user == null) {
 					System.out.println("[로그인 실패]");
 				}
 				else {
 					System.out.println("[로그인 성공]");
 					
-					session.setAttribute("user", userA);
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);
 				}
+				
 				WebUtil.redirect(request, response, "/mysite2/main");
 				break;
 				
 			case "logout":
+				HttpSession session = request.getSession();
 				session.removeAttribute("user");
 				session.invalidate();
+				
 				WebUtil.redirect(request, response, "/mysite2/main");
 				break;
 				
 			case "modifyForm":
+				session = request.getSession();
 				user = (UserVo)session.getAttribute("user");
+				
 				if (user != null) {
 					uDao = new UserDao();
-					userA = uDao.getUser(user.getId());
-					session.setAttribute("user", userA);
-					WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+					user = uDao.getUser(user.getNo());
+					
+					request.setAttribute("user", user);
+					WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");					
 				}
 				break;
 				
 			case "modify":
+				session = request.getSession();
 				user = (UserVo)session.getAttribute("user");
-				id = user.getId();
 				int no = user.getNo();
 				
 				pw = request.getParameter("pw");
 				name = request.getParameter("name");
 				gender = request.getParameter("gender");
-				uVo = new UserVo(id, pw, name, gender);
+				user = new UserVo(no, pw, name, gender);
 								
 				uDao = new UserDao();
-				uDao.modify(uVo);
+				uDao.modify(user);
 				
-				session.setAttribute("user", new UserVo(no, id, name));
+				session.setAttribute("user", new UserVo(user.getNo(), user.getName()));
 				WebUtil.redirect(request, response, "/mysite2/main");
 				break;
 		}
