@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.javaex.vo.UserVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
@@ -9,14 +8,11 @@
 <title>회원정보 수정</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
-
 </head>
-
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
-
 
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -51,7 +47,7 @@
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
-								<span class="text-large bold"><${user.id}></span>
+								<span class="text-large bold">${user.id}</span>
 							</div>
 	
 							<!-- 비밀번호 -->
@@ -89,12 +85,9 @@
 
 		</div>
 		<!-- //container  -->
-
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		
 	</div>
 	<!-- //wrap -->
-
 </body>
-
 </html>

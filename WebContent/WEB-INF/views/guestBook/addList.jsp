@@ -7,12 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>방명록</title>
-
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/guestbook.css" rel="stylesheet" type="text/css">
-
 </head>
-
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -104,7 +101,5 @@
 
 	</div>
 	<!-- //wrap -->
-
 </body>
-
 </html>

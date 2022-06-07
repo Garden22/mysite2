@@ -8,9 +8,7 @@
 <title>MySite</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/main.css" rel="stylesheet" type="text/css">
-
 </head>
-
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -43,7 +41,7 @@
 						</p>	
 					</div>
 					<!-- //greetings -->
-					
+				
 					<div class="clear"></div>
 					
 				</div>
@@ -52,15 +50,11 @@
 			</div>
 			<!-- //full-content -->
 			
-
 		</div>
 		<!-- //container -->
-		
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->
-
 </body>
-
 </html>

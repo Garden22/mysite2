@@ -7,9 +7,7 @@
 <title>회원가입 완료</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
-
 </head>
-
 <body>
 	<div id="wrap">
 
@@ -65,7 +63,5 @@
 
 	</div>
 	<!-- //wrap -->
-
 </body>
-
 </html>
