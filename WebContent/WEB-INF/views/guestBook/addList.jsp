@@ -1,14 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <%@ page import="com.javaex.vo.UserVo" %>
 <%@ page import="com.javaex.vo.GuestBookVo" %>
-<%@ page import="java.util.List" %>
-<%
-	UserVo user = (UserVo)session.getAttribute("user");
-	System.out.println("user " + user);
-	
-	List<GuestBookVo> gList = (List<GuestBookVo>)request.getAttribute("gList");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +15,8 @@
 
 <body>
 	<div id="wrap">
-
-		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
-		<jsp:include page="/WEB-INF/views/includes/nav.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 	
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -80,26 +72,25 @@
 						<!-- //guestWrite -->
 						
 					</form>	
-					
-					<%for (int i = 0; i < gList.size(); i++) {%>
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td><%=gList.get(i).getNo()%></td>
-							<td><%=gList.get(i).getName()%></td>
-							<td><%=gList.get(i).getRegDate()%></td>
-							<td><a href="/mysite2/guestbook?action=deleteForm&no=<%=gList.get(i).getNo()%>">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left"><%=gList.get(i).getContent()%></td>
-						</tr>
-					</table>
-					<%} %>
+					<c:forEach items="${gList}" var="gList">
+						<table class="guestRead">
+							<colgroup>
+								<col style="width: 10%;">
+								<col style="width: 40%;">
+								<col style="width: 40%;">
+								<col style="width: 10%;">
+							</colgroup>
+							<tr>
+								<td>${gList.no}</td>
+								<td>${gList.name}</td>
+								<td>${gList.regDate}</td>
+								<td><a href="/mysite2/guestbook?action=deleteForm&no=${gList.no}">[삭제]</a></td>
+							</tr>
+							<tr>
+								<td colspan=4 class="text-left">${gList.content}</td>
+							</tr>
+						</table>
+					</c:forEach>
 					<!-- //guestRead -->
 					
 				</div>
@@ -109,8 +100,7 @@
 			<!-- //content  -->
 		</div>
 		<!-- //container  -->
-
-		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->
