@@ -18,36 +18,9 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="/mysite2/main">MySite</a>
-			</h1>
-			
-			<%if (user == null) {%>
-				<ul>
-					<li><a href="/mysite2/user?action=loginForm" class="btn_s">로그인</a></li>
-					<li><a href="/mysite2/user?action=joinForm" class="btn_s">회원가입</a></li>
-				</ul>
-			<%} else {%>
-				<ul>
-					<li><%=user.getName()%>님 안녕하세요^^</li>
-					<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-					<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
-				</ul>
-			<%} %>
-			
-		</div>
-		<!-- //header -->
+		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/includes/nav.jsp"></jsp:include>
 
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="/mysite2/guestbook?action=addList">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
 
 		
 		<div id="container" class="clearfix">
@@ -91,10 +64,8 @@
 		<!-- //container -->
 		
 		
-		<div id="footer">
-			Copyright ⓒ 2022 정우성. All right reserved
-		</div>
-		<!-- //footer -->
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+
 
 	</div>
 	<!-- //wrap -->
