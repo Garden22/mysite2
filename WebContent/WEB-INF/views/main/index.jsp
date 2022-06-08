@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/main.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -19,7 +21,6 @@
 			
 				<!-- content-head 없음 -->
 				<div id="index"> 
-				
 					<img id="profile-img" src="/mysite2/assets/image/profile.jpg">
 					
 					<div id="greetings">
@@ -51,9 +52,12 @@
 			
 		</div>
 		<!-- //container -->
+		
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->
+	
 </body>
+
 </html>

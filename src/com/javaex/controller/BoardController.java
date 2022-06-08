@@ -18,8 +18,9 @@ import com.javaex.vo.UserVo;
 
 @WebServlet("/board")
 public class BoardController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
@@ -44,10 +45,10 @@ public class BoardController extends HttpServlet {
 				
 				String title = request.getParameter("title");
 				String content = request.getParameter("content").replace("\n", "<br>");
-				
-				bDao = new BoardDao();
 				BoardVo post = new BoardVo(title, content);
 				post.setUserNo(user.getNo());
+				
+				bDao = new BoardDao();
 				bDao.write(post);
 				
 				WebUtil.redirect(request, response, "/mysite2/board?action=list");
@@ -55,8 +56,10 @@ public class BoardController extends HttpServlet {
 				
 			case "read":
 				int no = Integer.parseInt(request.getParameter("no"));
+				
 				bDao = new BoardDao();
 				bDao.hit(no);
+				
 				post = bDao.readPost(no);
 				request.setAttribute("post", post);
 				
@@ -65,6 +68,7 @@ public class BoardController extends HttpServlet {
 				
 			case "delete":
 				no = Integer.parseInt(request.getParameter("no"));
+				
 				bDao = new BoardDao();
 				bDao.delete(no);
 				
@@ -76,6 +80,7 @@ public class BoardController extends HttpServlet {
 				user = (UserVo)session.getAttribute("user");
 				
 				no = Integer.parseInt(request.getParameter("no"));
+				
 				bDao = new BoardDao();
 				post = bDao.readPost(no);
 				post.setContent(post.getContent().replace("<br>", "\n"));
@@ -95,9 +100,9 @@ public class BoardController extends HttpServlet {
 				
 				WebUtil.redirect(request, response, "/mysite2/board?action=list");
 				break;
-		}		
+		}			
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");		
 		doGet(request, response);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -25,7 +27,6 @@
 			<!-- //aside -->
 
 			<div id="content">
-			
 				<div id="content-head">
 					<h3>회원가입</h3>
 					<div id="location">
@@ -43,7 +44,7 @@
 					<div id="joinForm">
 						<form action="/mysite2/user" method="post">
 							<input type="hidden" name="action" value="join">
-	
+
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label> 
@@ -87,14 +88,16 @@
 							<div class="button-area">
 								<button type="submit" id="btn-submit">회원가입</button>
 							</div>
-							
 						</form>
 					</div>
 					<!-- //joinForm -->
+					
 				</div>
 				<!-- //user -->
+				
 			</div>
 			<!-- //content  -->
+			
 		</div>
 		<!-- //container  -->
 		
@@ -102,5 +105,7 @@
 
 	</div>
 	<!-- //wrap -->
+	
 </body>
+
 </html>

@@ -7,12 +7,10 @@
 <title>일반게시판</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/board.css" rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
 	<div id="wrap">
-
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
@@ -27,7 +25,6 @@
 			<!-- //aside -->
 
 			<div id="content">
-
 				<div id="content-head">
 					<h3>게시판</h3>
 					<div id="location">
@@ -46,10 +43,11 @@
 						<form action="" method="get">
 							<div class="form-group text-right">
 								<input type="text">
-								<button type="submit" id=btn_search>검색</button>
+								<button type="submit" id="btn_search">검색</button>
 							</div>
 						</form>
-						<table >
+						
+						<table>
 							<thead>
 								<tr>
 									<th>번호</th>
@@ -60,19 +58,20 @@
 									<th>관리</th>
 								</tr>
 							</thead>
+							
 							<tbody>
-							<c:forEach items="${bList}" var="post">
-								<tr>
-									<td>${post.no}</td>
-									<td class="text-left"><a href="/mysite2/board?action=read&no=${post.no}">${post.title}</a></td>
-									<td>${post.name}</td>
-									<td>${post.hit}</td>
-									<td>${post.regDate}</td>
-									<c:if test="${user.name == post.name}">
-										<td><a href="/mysite2/board?action=delete&no=${post.no}">[삭제]</a></td>
-									</c:if>
-								</tr>
-							</c:forEach>
+								<c:forEach items="${bList}" var="post">
+									<tr>
+										<td>${post.no}</td>
+										<td class="text-left"><a href="/mysite2/board?action=read&no=${post.no}">${post.title}</a></td>
+										<td>${post.name}</td>
+										<td>${post.hit}</td>
+										<td>${post.regDate}</td>
+										<c:if test="${user.name == post.name}">
+											<td><a href="/mysite2/board?action=delete&no=${post.no}">[삭제]</a></td>
+										</c:if>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 			
@@ -91,29 +90,31 @@
 								<li><a href="">10</a></li>
 								<li><a href="">▶</a></li>
 							</ul>
-							
-							
+														
 							<div class="clear"></div>
 						</div>
 						
 						<c:if test="${!(empty user)}">
 							<a id="btn_write" href="/mysite2/board?action=writeForm">글쓰기</a>
 						</c:if>
+						
 					</div>
 					<!-- //list -->
+					
 				</div>
 				<!-- //board -->
+				
 			</div>
 			<!-- //content  -->
-
+			
 		</div>
 		<!-- //container  -->
-
+		
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->
-
+	
 </body>
 
 </html>

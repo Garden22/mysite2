@@ -8,12 +8,10 @@
 <title>Insert title here</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/board.css" rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
 	<div id="wrap">
-
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
@@ -28,9 +26,9 @@
 			<!-- //aside -->
 
 			<div id="content">
-
 				<div id="content-head">
 					<h3>게시판</h3>
+					
 					<div id="location">
 						<ul>
 							<li>홈</li>
@@ -38,6 +36,7 @@
 							<li class="last">일반게시판</li>
 						</ul>
 					</div>
+					
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
@@ -78,13 +77,15 @@
 							
 							<a id="btn_cancel" href="/mysite2/board?action=list">취소</a>
 							<button id="btn_modify" type="submit">수정</button>
-							
 						</form>
 						<!-- //form -->
+						
 					</div>
 					<!-- //modifyForm -->
 				</div>
+				
 				<!-- //board -->
+				
 			</div>
 			<!-- //content  -->
 

@@ -12,7 +12,6 @@
 
 <body>
 	<div id="wrap">
-
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
@@ -27,7 +26,6 @@
 			<!-- //aside -->
 
 			<div id="content">
-
 				<div id="content-head">
 					<h3>게시판</h3>
 					<div id="location">
@@ -87,6 +85,7 @@
 					
 				</div>
 				<!-- //board -->
+				
 			</div>
 			<!-- //content  -->
 

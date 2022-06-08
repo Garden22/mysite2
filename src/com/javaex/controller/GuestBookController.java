@@ -16,6 +16,7 @@ import com.javaex.vo.GuestBookVo;
 
 @WebServlet("/guestbook")
 public class GuestBookController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	      
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,8 +27,8 @@ public class GuestBookController extends HttpServlet {
 		switch(action) {
 			case "addList":
 				GuestBookDao gbDao = new GuestBookDao();
-				
 				List<GuestBookVo> gList = gbDao.select();
+				
 				request.setAttribute("gList", gList);
 				
 				WebUtil.forward(request, response, "/WEB-INF/views/guestBook/addList.jsp");
@@ -38,9 +39,10 @@ public class GuestBookController extends HttpServlet {
 				String pw = request.getParameter("pw");
 				String content = request.getParameter("content");
 				
-				gbDao = new GuestBookDao();
 				GuestBookVo visit = new GuestBookVo(name, pw, content);
 				visit.setContent(visit.getContent().replace("\n", "<br>"));
+				
+				gbDao = new GuestBookDao();
 				gbDao.add(visit);
 				
 				WebUtil.redirect(request, response, "/mysite2/guestbook?action=addList");

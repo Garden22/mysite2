@@ -89,11 +89,13 @@ public class UserController extends HttpServlet {
 			case "modify":
 				session = request.getSession();
 				user = (UserVo)session.getAttribute("user");
+				
 				int no = user.getNo();
 				
 				pw = request.getParameter("pw");
 				name = request.getParameter("name");
 				gender = request.getParameter("gender");
+				
 				user = new UserVo(no, pw, name, gender);
 								
 				uDao = new UserDao();

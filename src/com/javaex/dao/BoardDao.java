@@ -47,8 +47,10 @@ public class BoardDao {
 		
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
+		
 		return bList;
 	}
 	
@@ -65,6 +67,7 @@ public class BoardDao {
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
+			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -81,8 +84,10 @@ public class BoardDao {
 		
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
+		
 		return post;
 	}
 
@@ -103,6 +108,7 @@ public class BoardDao {
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
 		if (count > 0) System.out.println("[게시물 " + count + "건 등록되었습니다.]");
@@ -125,6 +131,7 @@ public class BoardDao {
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
 		if (count > 0) System.out.println("조회수++");
@@ -145,6 +152,7 @@ public class BoardDao {
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
 		if (count > 0) System.out.println("[" + count + "건 삭제되었습니다.]");
@@ -168,6 +176,7 @@ public class BoardDao {
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
 		if (count > 0) System.out.println("[" + count + "건 수정되었습니다.]");

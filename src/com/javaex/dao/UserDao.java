@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import com.javaex.vo.UserVo;
 
 public class UserDao {
+	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
@@ -17,7 +18,7 @@ public class UserDao {
 	private String pw = "webdb";
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	
+
 	
 	public void join(UserVo uVo) {
 		int count = -1;
@@ -67,6 +68,7 @@ public class UserDao {
 		}
 		close();
 		if (user == null) System.out.println("[비밀번호가 일치하지 않습니다]");
+		
 		return user;
 	}
 	
@@ -92,10 +94,12 @@ public class UserDao {
 				
 				user = new UserVo(no, id, pw, name, gender);
 			}
+			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		}
 		close();
+		
 		return user;
 	}
 	
@@ -118,6 +122,7 @@ public class UserDao {
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		}
+		
 		close();
 		if (count != -1) System.out.println("[" + count + "건 수정되었습니다]");
 	}
@@ -148,6 +153,7 @@ public class UserDao {
 			if (conn != null) {
 				conn.close();
 			}
+			
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}

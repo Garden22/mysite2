@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시물 작성</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="/mysite2/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 	<div id="wrap">
-
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
@@ -25,7 +26,6 @@
 			<!-- //aside -->
 
 			<div id="content">
-
 				<div id="content-head">
 					<h3>게시판</h3>
 					<div id="location">
@@ -42,6 +42,7 @@
 				<div id="board">
 					<div id="writeForm">
 						<form action="/mysite2/board?action=write" method="post">
+						
 							<!-- 제목 -->
 							<div class="form-group">
 								<label class="form-text" for="txt-title">제목</label>
@@ -58,10 +59,13 @@
 							
 						</form>
 						<!-- //form -->
+						
 					</div>
 					<!-- //writeForm -->
+					
 				</div>
 				<!-- //board -->
+				
 			</div>
 			<!-- //content  -->
 
@@ -74,4 +78,5 @@
 	<!-- //wrap -->
 
 </body>
+
 </html>

@@ -38,8 +38,9 @@ public class GuestBookDao {
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		}
+		
+		close();		
 		if (count > 0) System.out.println("[" + count + "건 삭제되었습니다.]");
-		close();
 	}
 	
 	
@@ -58,6 +59,7 @@ public class GuestBookDao {
 			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
 		if (count > 0) System.out.println("[" + count + "건 삭제되었습니다.]");
@@ -66,14 +68,13 @@ public class GuestBookDao {
 	
 	
 	public List<GuestBookVo> select() {
-		getConnection();
 		List<GuestBookVo> gList = new ArrayList<>();
+		getConnection();
 		
 		try {
 			String query = "select no, name, reg_date, content\nfrom guestbook\norder by no asc ";
 			
 			pstmt = conn.prepareStatement(query);
-			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -87,14 +88,15 @@ public class GuestBookDao {
 			
 		} catch(SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
+		
 		return gList;
 	}
 	
 	
 	public String findPW(int no) {
-		
 		String pw = "";
 		getConnection();
 		
@@ -113,11 +115,12 @@ public class GuestBookDao {
 			
 		} catch(SQLException e) {
 			System.out.println("error: " + e);
+			
 		}
 		close();
+		
 		return pw;
 	}
-	
 	
 	
 	private void getConnection() {
