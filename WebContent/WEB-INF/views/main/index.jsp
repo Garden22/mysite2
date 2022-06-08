@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="com.javaex.vo.UserVo" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +31,7 @@
 							</span>
 							<br>
 							사이트 소개, 회원가입, 방명록, 게시판으로 구성되어 있으며<br>
-							'jsp+servlet'(모델2) 방식으로 제작되었습니다.<br>
+							jsp+servlet(모델2) 방식으로 제작되었습니다.<br>
 							<br>
 							자바 수업 + 데이터베이스 수업 + 웹프로그래밍 수업<br>
 							<br>

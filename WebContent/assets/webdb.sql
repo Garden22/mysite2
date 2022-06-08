@@ -2,7 +2,7 @@ CREATE TABLE users (
     no NUMBER,
     id VARCHAR2(20) UNIQUE NOT NULL,
     password VARCHAR(20) NOT NULL,
-    name VARCHAR2(20),
+    name VARCHAR2(20) NOT NULL,
     gender VARCHAR2(10),
     PRIMARY KEY (no)
 );
@@ -40,6 +40,31 @@ INCREMENT BY 1
 START WITH 1
 NOCACHE;
 
+CREATE SEQUENCE seq_board_no
+INCREMENT BY 1
+START WITH 1
+NOCACHE;
+
+CREATE TABLE board (
+    no NUMBER,
+    title VARCHAR2(500) NOT NULL,
+    content VARCHAR2(4000),
+    hit NUMBER DEFAULT 0,
+    reg_date DATE NOT NULL,
+    user_no NUMBER NOT NULL,
+    PRIMARY KEY (no),
+    CONSTRAINT board_fk FOREIGN KEY (user_no)
+    REFERENCES users(no)
+);
+
+select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yyyy-mm-dd')
+from board b, users u
+where b.user_no = u.no;
+
+update board
+set hit = (select hit from board where no = 1) + 1
+where no = 1;
+
 COMMIT;
 ROLLBACK;
 
@@ -48,3 +73,6 @@ FROM users;
 
 SELECT *
 FROM guestbook;
+
+SELECT *
+FROM board;
