@@ -86,8 +86,7 @@ public class BoardController extends HttpServlet {
 				post.setContent(post.getContent().replace("<br>", "\n"));
 				request.setAttribute("post", post);
 				
-				if (user!=null && user.getNo() == post.getUserNo()) WebUtil.forward(request, response, "/WEB-INF/views/board/modifyForm.jsp");
-				else WebUtil.redirect(request, response, "/mysite2/board?action=read");
+				WebUtil.forward(request, response, "/WEB-INF/views/board/modifyForm.jsp");
 				break;
 				
 			case "modify":
