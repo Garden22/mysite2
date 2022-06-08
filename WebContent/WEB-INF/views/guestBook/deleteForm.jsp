@@ -16,14 +16,7 @@
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
 		<div id="container" class="clearfix">
-			<div id="aside">
-				<h2>방명록</h2>
-				<ul>
-					<li><a href="/mysite2/guestbook?action=addList">일반방명록</a></li>
-					<li>ajax방명록</li>
-				</ul>
-			</div>
-			<!-- //aside -->
+			<c:import url="/WEB-INF/views/includes/asideGuestBook.jsp"></c:import>
 
 			<div id="content">
 				<div id="content-head">

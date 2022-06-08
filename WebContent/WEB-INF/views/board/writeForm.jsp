@@ -16,14 +16,7 @@
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
 		<div id="container" class="clearfix">
-			<div id="aside">
-				<h2>게시판</h2>
-				<ul>
-					<li><a href="/mysite2/board?action=list">일반게시판</a></li>
-					<li><a href="">댓글게시판</a></li>
-				</ul>
-			</div>
-			<!-- //aside -->
+			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
 
 			<div id="content">
 				<div id="content-head">
