@@ -46,6 +46,8 @@ public class GuestBookController extends HttpServlet {
 				
 			case "deleteForm":
 				int no = Integer.parseInt(request.getParameter("no"));
+				request.setAttribute("no", no);
+
 				WebUtil.forward(request, response, "/WEB-INF/views/guestBook/deleteForm.jsp");
 				break;
 				
