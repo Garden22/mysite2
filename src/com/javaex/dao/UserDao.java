@@ -25,7 +25,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "insert into users\nvalues(seq_users_no.nextval, ?, ?, ?, ?) ";
+			String query = "insert into users values(seq_users_no.nextval, ?, ?, ?, ?) ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getId());
@@ -48,7 +48,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "select no, name from users\nwhere id = ? and password = ? ";
+			String query = "select no, name from users where id = ? and password = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getId());
@@ -78,7 +78,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "select no, id, password, name, gender from users\nwhere no = ? ";
+			String query = "select no, id, password, name, gender from users where no = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
@@ -109,7 +109,7 @@ public class UserDao {
 		getConnection();
 		
 		try {
-			String query = "update users\nset password= ?, name= ?, gender= ?\nwhere no= ? ";
+			String query = "update users set password= ?, name= ?, gender= ? where no= ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getPw());

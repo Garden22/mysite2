@@ -26,7 +26,7 @@ public class GuestBookDao {
 		getConnection();
 		
 		try {
-			String query = "insert into guestbook\nvalues(seq_guestbook_no.nextval, ?, ?, ?, sysdate) ";
+			String query = "insert into guestbook values(seq_guestbook_no.nextval, ?, ?, ?, sysdate) ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, gvo.getName());
@@ -49,7 +49,7 @@ public class GuestBookDao {
 		getConnection();
 		
 		try {
-			String query = "delete from guestbook\nwhere no = ? and password = ? ";
+			String query = "delete from guestbook where no = ? and password = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
@@ -72,7 +72,7 @@ public class GuestBookDao {
 		getConnection();
 		
 		try {
-			String query = "select no, name, reg_date, content\nfrom guestbook\norder by no asc ";
+			String query = "select no, name, reg_date, content from guestbook order by no asc ";
 			
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
@@ -101,7 +101,7 @@ public class GuestBookDao {
 		getConnection();
 		
 		try {
-			String query = "select password\nfrom guestbook\nwhere no = ? ";
+			String query = "select password from guestbook where no = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);

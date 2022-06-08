@@ -27,9 +27,9 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi')\n";
-			query += "from board b, users u\n";
-			query += "where b.user_no = u.no\n";
+			String query = "select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi') ";
+			query += "from board b, users u ";
+			query += "where b.user_no = u.no ";
 			query += "order by no desc ";
 			
 			pstmt = conn.prepareStatement(query);
@@ -60,9 +60,9 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "select b.no, b.title, b.content, b.user_no, u.name, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi')\n";
-			query += "from board b, users u\n";
-			query += "where b.user_no = u.no\n";
+			String query = "select b.no, b.title, b.content, b.user_no, u.name, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi') ";
+			query += "from board b, users u ";
+			query += "where b.user_no = u.no ";
 			query += "and b.no = ?  ";
 			
 			pstmt = conn.prepareStatement(query);
@@ -121,7 +121,7 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "update board\nset hit = (select hit from board where no = ?)+1\nwhere no = ? ";
+			String query = "update board set hit = (select hit from board where no = ?)+1 where no = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
@@ -143,7 +143,7 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "delete from board\nwhere no = ? ";
+			String query = "delete from board where no = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
@@ -165,7 +165,7 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "update board\n set title= ?, content= ?\n where no= ? ";
+			String query = "update board set title= ?, content= ? where no= ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, post.getTitle());
