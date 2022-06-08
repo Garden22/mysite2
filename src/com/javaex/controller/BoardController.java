@@ -43,7 +43,7 @@ public class BoardController extends HttpServlet {
 				UserVo user = (UserVo)session.getAttribute("user");
 				
 				String title = request.getParameter("title");
-				String content = request.getParameter("content");
+				String content = request.getParameter("content").replace("\n", "<br>");
 				
 				bDao = new BoardDao();
 				BoardVo post = new BoardVo(title, content);
@@ -78,6 +78,7 @@ public class BoardController extends HttpServlet {
 				no = Integer.parseInt(request.getParameter("no"));
 				bDao = new BoardDao();
 				post = bDao.readPost(no);
+				post.setContent(post.getContent().replace("<br>", "\n"));
 				request.setAttribute("post", post);
 				
 				if (user!=null && user.getNo() == post.getUserNo()) WebUtil.forward(request, response, "/WEB-INF/views/board/modifyForm.jsp");
@@ -87,7 +88,7 @@ public class BoardController extends HttpServlet {
 			case "modify":
 				no = Integer.parseInt(request.getParameter("postNo"));
 				title = request.getParameter("title");
-				content = request.getParameter("content");
+				content = request.getParameter("content").replace("\n", "<br>");
 				
 				bDao = new BoardDao();
 				bDao.modify(new BoardVo(no, title, content));

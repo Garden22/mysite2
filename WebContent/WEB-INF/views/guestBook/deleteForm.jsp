@@ -55,7 +55,7 @@
 								<td>비밀번호</td>
 								<td><input type="password" name="pw" value=""></td>
 								<td class="text-left"><button type="submit">삭제</button></td>
-								<td><a href="/mysite2/main">[메인으로 돌아가기]</a></td>
+								<td><a href="/mysite2/guestbook?action=addList">[메인으로 돌아가기]</a></td>
 							</tr>
 						</table>
 					</form>
