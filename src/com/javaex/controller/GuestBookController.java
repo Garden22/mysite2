@@ -39,7 +39,9 @@ public class GuestBookController extends HttpServlet {
 				String content = request.getParameter("content");
 				
 				gbDao = new GuestBookDao();
-				gbDao.add(new GuestBookVo(name, pw, content));
+				GuestBookVo visit = new GuestBookVo(name, pw, content);
+				visit.setContent(visit.getContent().replace("\n", "<br>"));
+				gbDao.add(visit);
 				
 				WebUtil.redirect(request, response, "/mysite2/guestbook?action=addList");
 				break;
