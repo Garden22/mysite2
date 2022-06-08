@@ -76,7 +76,7 @@
 								<textarea id="txt-content" name="content">${post.content}</textarea>
 							</div>
 							
-							<a id="btn_cancel" href="/mysite2/board?action=read&no=${post.no}">취소</a>
+							<a id="btn_cancel" href="/mysite2/board?action=list">취소</a>
 							<button id="btn_modify" type="submit">수정</button>
 							
 						</form>
