@@ -27,7 +27,7 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi') ";
+			String query = "select b.no, b.title, u.name, b.user_no, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi') ";
 			query += "from board b, users u ";
 			query += "where b.user_no = u.no ";
 			query += "order by no desc ";
@@ -39,10 +39,11 @@ public class BoardDao {
 				int no = rs.getInt(1);
 				String title = rs.getString(2);
 				String name = rs.getString(3);
-				int hit = rs.getInt(4);
-				String regDate = rs.getString(5);
+				int userNo = rs.getInt(4);
+				int hit = rs.getInt(5);
+				String regDate = rs.getString(6);
 				
-				bList.add(new BoardVo(no, title, name, hit, regDate));
+				bList.add(new BoardVo(no, title, name, userNo, hit, regDate));
 			}
 		
 		} catch (SQLException e) {
