@@ -68,7 +68,7 @@
 								</span>
 							</div>
 							
-							<c:if test="${post.name == user.name}">
+							<c:if test="${post.userNo == user.no}">
 								<button id="btn_modify" type="submit">수정</button>
 							</c:if>
 							<a id="btn_list" href="/mysite2/board?action=list">목록</a>

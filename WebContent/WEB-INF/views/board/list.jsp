@@ -60,7 +60,7 @@
 										<td>${post.name}</td>
 										<td>${post.hit}</td>
 										<td>${post.regDate}</td>
-										<c:if test="${user.name == post.name}">
+										<c:if test="${user.no == post.userNo}">
 											<td><a href="/mysite2/board?action=delete&no=${post.no}">[삭제]</a></td>
 										</c:if>
 									</tr>
