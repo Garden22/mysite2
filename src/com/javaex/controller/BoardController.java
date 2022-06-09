@@ -76,9 +76,6 @@ public class BoardController extends HttpServlet {
 				break;
 				
 			case "modifyForm":
-				session = request.getSession();
-				user = (UserVo)session.getAttribute("user");
-				
 				no = Integer.parseInt(request.getParameter("no"));
 				
 				bDao = new BoardDao();
