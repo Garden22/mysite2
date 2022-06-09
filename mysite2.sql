@@ -9,6 +9,7 @@ CREATE TABLE users (
 
 DROP TABLE users;
 
+
 CREATE SEQUENCE seq_users_no
 INCREMENT BY 1
 START WITH 1
@@ -16,13 +17,17 @@ NOCACHE;
 
 DROP SEQUENCE seq_users_no;
 
+
 INSERT INTO users VALUES(seq_users_no.NEXTVAL,);
+
 
 UPDATE users
 SET password = 'test'
 WHERE id = '테스트';
 
-DROP TABLE guestbook;
+
+
+
 
 CREATE TABLE guestbook(
     no NUMBER,
@@ -33,17 +38,16 @@ CREATE TABLE guestbook(
     PRIMARY KEY (no)
 );
 
-DROP SEQUENCE seq_guestbook_no;
+DROP TABLE guestbook;
 
 CREATE SEQUENCE seq_guestbook_no
 INCREMENT BY 1
 START WITH 1
 NOCACHE;
 
-CREATE SEQUENCE seq_board_no
-INCREMENT BY 1
-START WITH 1
-NOCACHE;
+
+
+
 
 CREATE TABLE board (
     no NUMBER,
@@ -57,16 +61,28 @@ CREATE TABLE board (
     REFERENCES users(no)
 );
 
-select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yyyy-mm-dd')
-from board b, users u
-where b.user_no = u.no;
+DROP TABLE board;
+
+CREATE SEQUENCE seq_board_no
+INCREMENT BY 1
+START WITH 1
+NOCACHE;
+
+DROP SEQUENCE seq_guestbook_no;
 
 update board
 set hit = (select hit from board where no = 1) + 1
 where no = 1;
 
+
+
+
+
+
 COMMIT;
+
 ROLLBACK;
+
 
 SELECT * 
 FROM users;
@@ -76,3 +92,7 @@ FROM guestbook;
 
 SELECT *
 FROM board;
+
+select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yyyy-mm-dd')
+from board b, users u
+where b.user_no = u.no;
