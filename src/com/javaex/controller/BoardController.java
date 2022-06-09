@@ -21,31 +21,34 @@ public class BoardController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private BoardDao bDao;
+	private BoardVo post;
+	private String title;
+	private String content;
+	private int no;
+	
+	private List<BoardVo> bList;
+	private HttpSession session;
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
 		System.out.println("boardController action: " + action);
 		
-		switch(action) {
-			case "list":
-				BoardDao bDao = new BoardDao();
-				List<BoardVo> bList = bDao.showList("");
-				request.setAttribute("bList", bList);
-				
-				WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");
-				break;
-				
+		switch((action!=null) ? action : "default") {
+		
 			case "writeForm":
 				WebUtil.forward(request, response, "/WEB-INF/views/board/writeForm.jsp");
 				break;
 				
 			case "write":
-				HttpSession session = request.getSession();
+				session = request.getSession();
 				UserVo user = (UserVo)session.getAttribute("user");
 				
-				String title = request.getParameter("title");
-				String content = request.getParameter("content").replace("\n", "<br>");
-				BoardVo post = new BoardVo(title, content);
+				title = request.getParameter("title");
+				content = request.getParameter("content").replace("\n", "<br>");
+				post = new BoardVo(title, content);
 				post.setUserNo(user.getNo());
 				
 				bDao = new BoardDao();
@@ -55,7 +58,7 @@ public class BoardController extends HttpServlet {
 				break;
 				
 			case "read":
-				int no = Integer.parseInt(request.getParameter("no"));
+				no = Integer.parseInt(request.getParameter("no"));
 				
 				bDao = new BoardDao();
 				bDao.hit(no);
@@ -103,6 +106,14 @@ public class BoardController extends HttpServlet {
 				bDao = new BoardDao();
 				bList = bDao.showList(search);
 				
+				request.setAttribute("bList", bList);
+				
+				WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");
+				break;
+				
+			default:
+				bDao =  new BoardDao();
+				bList = bDao.showList("");
 				request.setAttribute("bList", bList);
 				
 				WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");

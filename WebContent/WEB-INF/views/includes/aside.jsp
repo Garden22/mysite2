@@ -11,16 +11,16 @@
 	<div id="aside">
 		<c:choose>
 			<c:when test="${aside == 'guestbook'}">
-				<h2>게시판</h2>
+				<h2>방명록</h2>
 				<ul>
-					<li><a href="/mysite2/board?action=list">일반게시판</a></li>
-					<li><a href="">댓글게시판</a></li>
+					<li><a href="/mysite2/guestbook">일반방명록</a></li>
+					<li><a href="">ajax방명록</a></li>
 				</ul>
 			</c:when>
 			<c:when test="${aside == 'board'}">
 				<h2>게시판</h2>
 				<ul>
-					<li><a href="/mysite2/board?action=list">일반게시판</a></li>
+					<li><a href="/mysite2/board">일반게시판</a></li>
 					<li><a href="">댓글게시판</a></li>
 				</ul>
 			</c:when>

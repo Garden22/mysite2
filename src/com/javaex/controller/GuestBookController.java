@@ -18,28 +18,30 @@ import com.javaex.vo.GuestBookVo;
 public class GuestBookController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private GuestBookDao gbDao;
+	private GuestBookVo visit;
+	
+	private String name;
+	private String pw;
+	private String content;
+	private int no;
+	
+	private List<GuestBookVo> gList;
+	
 	      
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
 		System.out.println("guestbookController action: " + action);
 		
-		switch(action) {
-			case "addList":
-				GuestBookDao gbDao = new GuestBookDao();
-				List<GuestBookVo> gList = gbDao.select();
-				
-				request.setAttribute("gList", gList);
-				
-				WebUtil.forward(request, response, "/WEB-INF/views/guestBook/addList.jsp");
-				break;
-				
+		switch((action!=null) ? action : "default") {			
 			case "add":
-				String name = request.getParameter("name");
-				String pw = request.getParameter("pw");
-				String content = request.getParameter("content");
+				name = request.getParameter("name");
+				pw = request.getParameter("pw");
+				content = request.getParameter("content");
 				
-				GuestBookVo visit = new GuestBookVo(name, pw, content);
+				visit = new GuestBookVo(name, pw, content);
 				visit.setContent(visit.getContent().replace("\n", "<br>"));
 				
 				gbDao = new GuestBookDao();
@@ -49,7 +51,7 @@ public class GuestBookController extends HttpServlet {
 				break;
 				
 			case "deleteForm":
-				int no = Integer.parseInt(request.getParameter("no"));
+				no = Integer.parseInt(request.getParameter("no"));
 				request.setAttribute("no", no);
 
 				WebUtil.forward(request, response, "/WEB-INF/views/guestBook/deleteForm.jsp");
@@ -64,6 +66,15 @@ public class GuestBookController extends HttpServlet {
 				gbDao.delete(no, pw);
 				
 				WebUtil.redirect(request, response, "/mysite2/guestbook?action=addList");
+				break;
+				
+			default:
+				gbDao = new GuestBookDao();
+				gList = gbDao.select();
+				
+				request.setAttribute("gList", gList);
+				
+				WebUtil.forward(request, response, "/WEB-INF/views/guestBook/addList.jsp");
 				break;
 		}
 	}

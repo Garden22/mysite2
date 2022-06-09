@@ -49,7 +49,7 @@
 								<textarea id="txt-content" name="content"></textarea>
 							</div>
 							
-							<a id="btn_cancel" href="/mysite2/board?action=list">취소</a>
+							<a id="btn_cancel" href="/mysite2/board">취소</a>
 							<button id="btn_add" type="submit">등록</button>
 							
 						</form>

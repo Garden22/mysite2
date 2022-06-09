@@ -72,7 +72,7 @@
 							<c:if test="${post.userNo == user.no}">
 								<button id="btn_modify" type="submit">수정</button>
 							</c:if>
-							<a id="btn_list" href="/mysite2/board?action=list">목록</a>
+							<a id="btn_list" href="/mysite2/board">목록</a>
 						</div>
 					<!-- //read -->
 					</form>		
