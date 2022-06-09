@@ -61,7 +61,7 @@
 						<!-- //guestWrite -->
 					</form>	
 					
-					<c:forEach items="${gList}" var="gList">
+					<c:forEach items="${gList}" var="visit">
 						<table class="guestRead">
 							<colgroup>
 								<col style="width: 10%;">
@@ -71,13 +71,13 @@
 							</colgroup>
 							
 							<tr>
-								<td>${gList.no}</td>
-								<td>${gList.name}</td>
-								<td>${gList.regDate}</td>
-								<td><a href="/mysite2/guestbook?action=deleteForm&no=${gList.no}">[삭제]</a></td>
+								<td>${visit.no}</td>
+								<td>${visit.name}</td>
+								<td>${visit.regDate}</td>
+								<td><a href="/mysite2/guestbook?action=deleteForm&no=${visit.no}">[삭제]</a></td>
 							</tr>
 							<tr>
-								<td colspan=4 class="text-left">${gList.content}</td>
+								<td colspan=4 class="text-left">${visit.content}</td>
 							</tr>
 						</table>
 					</c:forEach>

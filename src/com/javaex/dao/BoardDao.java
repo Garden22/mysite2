@@ -125,7 +125,7 @@ public class BoardDao {
 		getConnection();
 		
 		try {
-			String query = "update board set hit = (select hit from board where no = ?)+1 where no = ? ";
+			String query = "update board set hit = hit+1 where no = ? ";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
