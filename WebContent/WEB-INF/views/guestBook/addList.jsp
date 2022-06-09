@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <%@ page import="com.javaex.vo.GuestBookVo" %>
+<c:set var="aside" value="guestbook" scope="request"/>
 
 <!DOCTYPE html>
 <html>
@@ -13,11 +14,11 @@
 
 <body>
 	<div id="wrap">
-		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
+		<c:import url="/WEB-INF/views/includes/header.jsp"/>
+		<c:import url="/WEB-INF/views/includes/nav.jsp"/>
 	
 		<div id="container" class="clearfix">
-			<c:import url="/WEB-INF/views/includes/asideGuestBook.jsp"></c:import>
+			<c:import url="/WEB-INF/views/includes/aside.jsp"/>
 
 			<div id="content">
 				<div id="content-head" class="clearfix">
@@ -90,7 +91,7 @@
 		</div>
 		<!-- //container  -->
 		
-		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 
 	</div>
 	<!-- //wrap -->

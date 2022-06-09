@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="aside" value="board" scope="request"/>
 
 <!DOCTYPE html>
 <html>
@@ -12,11 +13,11 @@
 
 <body>
 	<div id="wrap">
-		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
+		<c:import url="/WEB-INF/views/includes/header.jsp"/>
+		<c:import url="/WEB-INF/views/includes/nav.jsp"/>
 
 		<div id="container" class="clearfix">
-			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"></c:import>
+			<c:import url="/WEB-INF/views/includes/aside.jsp"/>
 
 			<div id="content">
 				<div id="content-head">
@@ -85,7 +86,7 @@
 		</div>
 		<!-- //container  -->
 
-		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 
 	</div>
 	<!-- //wrap -->
