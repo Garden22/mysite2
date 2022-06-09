@@ -29,7 +29,7 @@ public class BoardController extends HttpServlet {
 		switch(action) {
 			case "list":
 				BoardDao bDao = new BoardDao();
-				List<BoardVo> bList = bDao.showList();
+				List<BoardVo> bList = bDao.showList("");
 				request.setAttribute("bList", bList);
 				
 				WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");
