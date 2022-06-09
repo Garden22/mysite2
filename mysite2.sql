@@ -70,9 +70,9 @@ NOCACHE;
 
 DROP SEQUENCE seq_guestbook_no;
 
-update board
-set hit = (select hit from board where no = 1) + 1
-where no = 1;
+UPDATE board
+SET hit = (SELECT hit FROM board WHERE no = 1) + 1
+WHERE no = 1;
 
 
 
@@ -93,6 +93,6 @@ FROM guestbook;
 SELECT *
 FROM board;
 
-select b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yyyy-mm-dd')
-from board b, users u
-where b.user_no = u.no;
+SELECT b.no, b.title, u.name, b.hit, to_char(b.reg_date, 'yyyy-mm-dd')
+FROM board b, users u
+WHERE b.user_no = u.no;
