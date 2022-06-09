@@ -129,7 +129,6 @@ public class BoardDao {
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, no);
-			pstmt.setInt(2, no);
 			
 			count = pstmt.executeUpdate();
 			
