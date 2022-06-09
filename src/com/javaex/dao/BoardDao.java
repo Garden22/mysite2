@@ -56,6 +56,43 @@ public class BoardDao {
 	}
 	
 	
+	public List<BoardVo> showList(String search) {
+		List<BoardVo> bList = new ArrayList<>();
+		search = "%" + search + "%";
+		getConnection();
+		
+		try {
+			String query = "select b.no, b.title, u.name, b.user_no, b.hit, to_char(b.reg_date, 'yy-mm-dd hh:mi') ";
+			query += "from board b, users u ";
+			query += "where b.user_no = u.no ";
+			query += "and b.title like ? ";
+			query += "order by no desc ";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, search);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				int no = rs.getInt(1);
+				String title = rs.getString(2);
+				String name = rs.getString(3);
+				int userNo = rs.getInt(4);
+				int hit = rs.getInt(5);
+				String regDate = rs.getString(6);
+				
+				bList.add(new BoardVo(no, title, name, userNo, hit, regDate));
+			}
+		
+		} catch (SQLException e) {
+			System.out.println("error: " + e);
+			
+		}
+		close();
+		
+		return bList;
+	}
+	
+	
 	public BoardVo readPost(int no) {
 		BoardVo post = null;
 		getConnection();

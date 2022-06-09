@@ -33,9 +33,10 @@
 	
 				<div id="board">
 					<div id="list">
-						<form action="" method="get">
+						<form action="/mysite2/board" method="get">
+							<input type="hidden" name="action" value="search">
 							<div class="form-group text-right">
-								<input type="text">
+								<input type="text" name="search" value="">
 								<button type="submit" id="btn_search">검색</button>
 							</div>
 						</form>
