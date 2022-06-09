@@ -17,7 +17,7 @@
 		<c:import url="/WEB-INF/views/includes/nav.jsp"/>
 
 		<div id="container" class="clearfix">
-			<c:import url="/WEB-INF/views/includes/asideBoard.jsp"/>
+			<c:import url="/WEB-INF/views/includes/aside.jsp"/>
 			
 			<div id="content">
 				<div id="content-head">
